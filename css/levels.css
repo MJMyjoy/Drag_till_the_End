@@ -1,0 +1,297 @@
+@keyframes boutons
+{
+    0%
+    {
+      left: 100%;
+    }
+    100%
+    {
+      left: 0%;
+    }
+}
+
+@keyframes accueil
+{
+  0%
+  {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  100%
+  {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+#accueil
+{
+  -webkit-transition: all 3s;
+          transition: all 3s;
+  -webkit-animation: accueil 2s 0.5s both;
+  animation: accueil 2s 0.5s both;
+}
+
+#accueil q
+{
+  font-style: italic;
+}
+
+#original, #regular, #extended
+{
+  position: relative;
+  display: block;
+  border-radius: 3px;
+  background: pink;
+  color: black;
+  font-size: 13px;
+  height: 30px;
+  width: 80px;
+  margin: 10px auto;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  animation: boutons 3s both;
+  -webkit-animation: boutons 3s both;
+}
+#original
+{
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+#regular
+{
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+#extended
+{
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+
+
+#original:active, #regular:active, #extended:active
+{
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  color: red;
+}
+
+
+
+.original-left {
+  left: 0;
+  background: linear-gradient(white, pink);
+
+   -webkit-clip-path: polygon(
+    0 0,      
+    40% 0, 
+    35% 15%, 
+    55% 35%,
+    45% 45%,
+    60% 60%,
+    30% 80%,
+    40% 100%, 
+    0 100% );
+
+  clip-path: polygon(
+    0 0,      /* Une premier point en haut à gauche de l’écran */ 
+    40% 0, /* Le second point en haut à droite de la forme */
+    35% 15%, /* Ce point comme les suivants crée les « zig-zag » */
+    55% 35%,
+    45% 45%,
+    60% 60%,
+    30% 80%,
+    40% 100%, /* Le point à gauche du point de #start-spot */
+    0 100%); /* Ce dernier point en bas à gauche de l’écran  */
+}
+
+
+.original-right {
+  right: 0;
+  background: linear-gradient(white, pink);
+
+  -webkit-clip-path: polygon(
+  60% 0,
+  100% 0,
+  100% 100%,
+  60% 100%,
+  44% 81%,
+  70% 60%,
+  57% 44%,
+  65% 35%,
+  46% 15%
+  );
+
+  clip-path: polygon(
+  60% 0,
+  100% 0,
+  100% 100%,
+  60% 100%,
+  44% 81%,
+  70% 60%,
+  57% 44%,
+  65% 35%,
+  46% 15%
+  );
+}
+
+
+
+
+
+.regular-left {
+  left: 0;
+  background: linear-gradient(skyblue, pink);
+
+  -webkit-clip-path: polygon(
+    0 0,
+    50% 0,
+    30% 10%,
+    50% 20%,
+    30% 30%,
+    50% 40%,
+    30% 50%,
+    50% 60%,
+    30% 70%,
+    50% 80%,
+    30% 90%,
+    50% 100%,
+    0 100%);
+
+clip-path: polygon(
+    0 0,
+    50% 0,
+    30% 10%,
+    50% 20%,
+    30% 30%,
+    50% 40%,
+    30% 50%,
+    50% 60%,
+    30% 70%,
+    50% 80%,
+    30% 90%,
+    50% 100%,
+    0 100%);
+}
+
+.regular-right {
+  right: 0;
+  background: linear-gradient(skyblue, pink);
+
+  -webkit-clip-path: polygon(60% 0,
+  100% 0,
+  100% 100%,
+  60% 100%,
+  40% 90%,
+  60% 80%, 
+  40% 70%,
+  60% 60%,
+  40% 50%,
+  60% 40%,
+  40% 30%,
+  60% 20%,
+  40% 10%
+  );
+
+  clip-path: polygon(60% 0,
+  100% 0,
+  100% 100%,
+  60% 100%,
+  40% 90%,
+  60% 80%, 
+  40% 70%,
+  60% 60%,
+  40% 50%,
+  60% 40%,
+  40% 30%,
+  60% 20%,
+  40% 10%
+  );
+}
+
+
+
+
+
+
+
+
+
+
+.extended-left {
+  left: 0;
+  background: linear-gradient(gray, pink);
+
+  -webkit-clip-path: polygon(
+    0 0,
+    50% 0,
+    30% 10%,
+    60% 20%,
+    40% 30%,
+    70% 40%,
+    50% 50%,
+    60% 60%,
+    40% 70%,
+    50% 80%,
+    30% 90%,
+    50% 100%,
+    0 100%);
+
+clip-path: polygon(
+    0 0,
+    50% 0,
+    30% 10%,
+    60% 20%,
+    40% 30%,
+    70% 40%,
+    50% 50%,
+    60% 60%,
+    40% 70%,
+    50% 80%,
+    30% 90%,
+    50% 100%,
+    0 100%);
+}
+
+.extended-right {
+  right: 0;
+  background: linear-gradient(gray, pink);
+
+  -webkit-clip-path: polygon(60% 0,
+  100% 0,
+  100% 100%,
+  60% 100%,
+  40% 90%,
+  60% 80%, 
+  50% 70%,
+  70% 60%,
+  60% 50%,
+  80% 40%,
+  50% 30%,
+  70% 20%,
+  40% 10%
+  );
+
+  clip-path: polygon(60% 0,
+  100% 0,
+  100% 100%,
+  60% 100%,
+  40% 90%,
+  60% 80%, 
+  50% 70%,
+  70% 60%,
+  60% 50%,
+  80% 40%,
+  50% 30%,
+  70% 20%,
+  40% 10%
+  );
+}
+
+
+

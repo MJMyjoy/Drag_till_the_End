@@ -1,0 +1,284 @@
+/* STYLES DE BASE */
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ background: rgba(40, 40, 40, 0.9); 
+  color: white;
+}
+
+
+#game {
+  position: relative;
+  width: 30%;
+  height: 60rem;
+  margin: -20rem auto auto;
+  box-shadow: 0 1px 15px rgb(20, 20, 20);
+ overflow: hidden;
+  -webkit-transform: perspective(1000px) rotateX(60deg);
+          transform: perspective(1000px) rotateX(60deg);
+          -webkit-transition: all 1s;
+          transition: all 1s;
+          cursor: crosshair;
+          display: none;
+          
+}
+
+
+#game:hover {
+  background-color: chocolate;
+}
+
+
+
+/* KEYFRAMES */
+
+@keyframes walls {
+  0% {
+    -webkit-transform: none;
+    transform: none;
+  }
+  100% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
+
+@keyframes win {
+  0% {
+    opacity: 0;
+  }
+  95% {
+    opacity: 0;
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+  }
+  100% {
+    opacity: 1;
+    background-color: grey;
+    transform: rotateY(360deg);
+    -webkit-transform: rotateY(360deg);
+    
+  }
+}
+
+@keyframes pointeur {
+  0%
+  {
+    pointer-events: all; 
+  }
+  100% {
+    pointer-events: all; 
+  }
+}
+
+
+@keyframes tourne {
+  
+  40%, 50%
+  {
+    -webkit-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+  }
+  100%
+  {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+}
+
+
+/* STYLES DES FIN DE JEU */
+
+#lose, #win {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+#lose {
+  display: none;
+  background: red;
+  cursor: no-drop;
+}
+
+#win {
+  opacity: 0;
+  pointer-events: none;
+  transition: 1s all;
+  color: gold;
+  cursor: grab;
+}
+
+
+/* BOUTON GO*/
+
+#start-spot{
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  border-radius: 2px;
+  height: 15px;
+  width: 20px;
+  background: pink;
+  color: black;
+  font-size: 13px;
+  transition: all 1s;
+  -webkit-transition: all 1s;  
+}
+
+
+/* LES MURS */
+
+#wall-left, #wall-right {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 400%;
+}
+ 
+
+/* LES EVENEMENTS */
+
+
+#game:hover #start-spot {
+  transform: scale(0);
+  -webkit-transform: scale(0);
+}
+
+#wall-left:hover ~ #lose,
+#wall-right:hover ~ #lose,
+#lose:hover {
+  display: block;
+  z-index: 1;
+}
+
+
+/* AUTRES */
+
+#lose h1, #win h1 {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+}
+
+
+#lose h2, #win h2 {
+  position: absolute;
+  bottom: 35%;
+  right: -50%;
+  
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  color: pink;
+}
+
+#lose:hover h2, #win:hover h2
+{
+  right: 20%;
+}
+
+
+#lose h3, #win h3
+{
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+  font-size: 13px;
+  color: white;
+  font-style: italic;
+  font-weight: normal;
+}
+
+#win h3
+{
+  animation: tourne 3s ease-in-out infinite;
+  -webkit-animation: tourne 3s ease-in-out infinite;       
+}
+
+
+
+/* ANIMATIONS */
+
+#game:hover #wall-left,
+#game:hover #wall-right {
+  -webkit-animation: walls 20s ease-in forwards;
+          animation: walls 20s ease-in forwards;
+            z-index: -1;
+}
+
+
+#game:hover #win {
+  -webkit-animation: win 20s ease-in forwards, pointeur 2s 20s infinite;
+          animation: win 20s ease-in forwards, pointeur 2s 20s infinite;
+}
+
+
+/* EN BAS */
+
+
+#restart
+{
+  opacity: 0;
+  border-radius: 3px;
+  background: pink;
+  color: black;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  width: 130px;
+  height: 30px;
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  transition: transform 0.2s, color 0.2s, opacity 2s;
+  -webkit-transition: transform 0.2s, color 0.2s, opacity 2s;
+}
+
+
+#restart:active
+{
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  color: red;
+}
+
+section
+{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  font-size: 30px;
+}
+
+
+aside
+{
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  font-size: 25px;
+  color: pink;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 2s;
+  -webkit-transition: opacity 2s;
+}
+
+#game:hover + #restart,  #game:hover ~ aside
+{
+  animation: tourne 3s ease-in-out infinite;
+  -webkit-animation: tourne 3s ease-in-out infinite;
+}
+
+
